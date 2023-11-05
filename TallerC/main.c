@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <math.h>
+#include <string.h>
 
 
 void numerosRomanos( char[20]);
 void factoresPrimos(int);
 void numerosEgolatras(int);
+void nombrePropio(char[50]);
 int countDigits(int);
 
 int main() {
-    char aux[20] ;
+    char aux[50] ;
     int op;
     int a;
 
@@ -27,10 +30,11 @@ int main() {
                "Ingrese una opcion:\n");
         scanf("%i", &op);
 
+        while (getchar() != '\n');
         switch (op) {
             case 1:
                 printf("Ingrese el numero romano:\n");
-                scanf("%s", &aux);
+                fgets(aux,20,stdin);
                 numerosRomanos(aux);
                 break;
             case 2:
@@ -39,6 +43,9 @@ int main() {
                 factoresPrimos(a);
                 break;
             case 3:
+                printf("Ingrese una palabra:\n");
+                fgets(aux,50,stdin);
+                nombrePropio(aux);
                 break;
             case 4:
                 printf("Ingrese un numero:\n");
@@ -59,6 +66,7 @@ int main() {
             case 10:
                 break;
             default:
+                printf("\nERROR Opcion invalida\n");
                 break;
         }
     }
@@ -68,7 +76,7 @@ int main() {
 void numerosRomanos(char aux[20]) {
     double num=0;
     short int a=0;
-    for (int i = 0; aux[i] != '\0'; i++) {
+    for (int i = 0; i <=strlen(aux); i++) {
         switch (aux[i]) {
             case 'I':
                 num += 1;
@@ -211,4 +219,30 @@ int countDigits(int num) {
         count++;
     }
     return count;
+}
+
+void nombrePropio(char aux[50]){
+      int con=strlen(aux);
+      char nuevo[20];
+      char b;
+
+      if(con==2){
+          b= tolower(aux[0]);
+          printf("%c",b);
+
+      }else{
+          nuevo[0]=toupper(aux[0]);
+
+          for(int i=1; i <= con; i++){
+              if(aux[i-1]==' '){
+                  nuevo[i]= toupper(aux[i]);
+              }else{
+                  nuevo[i]= tolower(aux[i]);
+              }
+          }
+
+          printf("%s",nuevo);
+      }
+
+
 }
