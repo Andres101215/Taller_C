@@ -193,10 +193,8 @@ void factoresPrimos(int a){
                }else{
                    printf(" %d ",i);
                }
-
            }
         }
-
     }
     printf("\n");
 }
@@ -211,9 +209,7 @@ void numerosEgolatras(int num){
         sum += pow(digit, n);
         num /= 10;
     }
-
     if(sum == originalNum ? printf("True\n"): printf("False\n"));
-
 }
 
 int countDigits(int num) {
@@ -233,7 +229,6 @@ void nombrePropio(char aux[100]){
       if(con==2){
           b= tolower(aux[0]);
           printf("%c",b);
-
       }else{
           nuevo[0]=toupper(aux[0]);
 
@@ -244,9 +239,6 @@ void nombrePropio(char aux[100]){
                   nuevo[i]= tolower(aux[i]);
               }
           }
-
           printf("%s",nuevo);
       }
-
-
 }
