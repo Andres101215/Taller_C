@@ -13,7 +13,7 @@ int countDigits(int);
 
 int main() {
     char aux[50] ;
-    int op;
+    char op;
     int a;
 
     while(op!=10) {
@@ -28,42 +28,46 @@ int main() {
                "\n9.Matriz magica"
                "\n10.Salir\n"
                "Ingrese una opcion:\n");
-        scanf("%i", &op);
+        scanf("%c", &op);
 
         while (getchar() != '\n');
         switch (op) {
-            case 1:
+            case '1':
                 printf("Ingrese el numero romano:\n");
                 fgets(aux,20,stdin);
                 numerosRomanos(aux);
                 break;
-            case 2:
+
+            case '2':
                 printf("Ingrese un numero:\n");
                 scanf("%i", &a);
                 factoresPrimos(a);
                 break;
-            case 3:
+
+            case '3':
                 printf("Ingrese una palabra:\n");
                 fgets(aux,50,stdin);
                 nombrePropio(aux);
                 break;
-            case 4:
+
+            case '4':
                 printf("Ingrese un numero:\n");
                 scanf("%d", &a);
                 numerosEgolatras(a);
+                break;
 
+            case '5':
                 break;
-            case 5:
+            case '6':
                 break;
-            case 6:
+            case '7':
                 break;
-            case 7:
+            case '8':
                 break;
-            case 8:
+            case '9':
                 break;
-            case 9:
-                break;
-            case 10:
+            case '10':
+                printf("Gracias por utilizar nuestro software");
                 break;
             default:
                 printf("\nERROR Opcion invalida\n");
@@ -76,7 +80,7 @@ int main() {
 void numerosRomanos(char aux[20]) {
     double num=0;
     short int a=0;
-    for (int i = 0; i <=strlen(aux); i++) {
+    for (int i = 0; i <strlen(aux)-1; i++) {
         switch (aux[i]) {
             case 'I':
                 num += 1;
