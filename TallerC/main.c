@@ -8,7 +8,7 @@
 void numerosRomanos( char[20]);
 void factoresPrimos(int);
 void numerosEgolatras(int);
-void nombrePropio(char[50]);
+void nombrePropio(char[100]);
 int countDigits(int);
 
 int main() {
@@ -46,7 +46,7 @@ int main() {
 
             case '3':
                 printf("Ingrese una palabra:\n");
-                fgets(aux,50,stdin);
+                fgets(aux,100,stdin);
                 nombrePropio(aux);
                 break;
 
@@ -225,9 +225,9 @@ int countDigits(int num) {
     return count;
 }
 
-void nombrePropio(char aux[50]){
+void nombrePropio(char aux[100]){
       int con=strlen(aux);
-      char nuevo[20];
+      char nuevo[100];
       char b;
 
       if(con==2){
