@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+
 
 void numerosRomanos( char[20]);
 void factoresPrimos(int);
-void numerosEgolatras(char[20]);
+void numerosEgolatras(int);
+int countDigits(int);
 
 int main() {
     char aux[20] ;
@@ -39,8 +42,8 @@ int main() {
                 break;
             case 4:
                 printf("Ingrese un numero:\n");
-                scanf("%s", &aux);
-                numerosEgolatras(aux);
+                scanf("%d", &a);
+                numerosEgolatras(a);
 
                 break;
             case 5:
@@ -186,16 +189,26 @@ void factoresPrimos(int a){
     printf("\n");
 }
 
-void numerosEgolatras(char aux[10]){
-    int numero = atoi(aux);
+void numerosEgolatras(int num){
+    int originalNum = num;
+    int n = countDigits(num);
+    int sum = 0;
 
-    int intArray[sizeof(aux) / sizeof(aux[0])];
-
-    for (int i = 0; i < sizeof(aux) / sizeof(aux[0]); i++) {
-        intArray[i] = aux[i] - '0';
+    while (num != 0) {
+        int digit = num % 10;
+        sum += pow(digit, n);
+        num /= 10;
     }
-    for(){
-        
-    }
 
+    if(sum == originalNum ? printf("True\n"): printf("False\n"));
+
+}
+
+int countDigits(int num) {
+    int count = 0;
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+    return count;
 }
