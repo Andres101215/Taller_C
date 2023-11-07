@@ -1,8 +1,9 @@
 # Taller_C
 Taller programación 3
 
-_Puentes Andrés
-_Robelto Luis
+Intengrantes:
+_Andres Felipe Puentes Montaña
+_Luis Esteban Robelto
 
 Plataforma: Windows
 Editor: CLion
