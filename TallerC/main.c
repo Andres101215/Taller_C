@@ -182,7 +182,7 @@ void numerosRomanos(char aux[20]) {
 
 void factoresPrimos(int a){
    int con=0;
-    for(int i=2; i > 1; i++){
+    for(int i=2; a > 1; i++){
         con=0;
         while(a%i==0){
             con++;
