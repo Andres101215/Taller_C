@@ -12,7 +12,7 @@ void numerosEgolatras(int);
 void nombrePropio(char[100]);
 int countDigits(int);
 bool friendsNumbers ( int , int );
-
+char* convert (char*);
 
 int main() {
     char aux[50] ;
@@ -20,6 +20,7 @@ int main() {
     int a;
     int b;
     int c;
+    char date[30];
 
     while(op!=10) {
 
@@ -86,6 +87,21 @@ int main() {
 
                 break;
             case '6':
+
+                printf("Ingrese la fecha en formato dd/mm/aaaa: ");
+                fgets(date, sizeof(date), stdin);
+
+                // Eliminar el salto de línea al final de la cadena (si está presente)
+                int len = strlen(date);
+                if (len > 0 && date[len - 1] == '\n') {
+                    date[len - 1] = '\0';
+                }
+
+                char* resultado= convert(date);
+                printf("%s", resultado);
+
+                getchar();
+
                 break;
             case '7':
                 break;
@@ -102,31 +118,6 @@ int main() {
         }
     }
     return 0;
-}
-
-bool friendsNumbers (int a, int b){
-
-    int auxA;
-    int auxB;
-
-    for(int i=1; i<a-1;i++){
-
-        if(a%i==0){
-            auxA+=i;
-        }
-    }
-    for(int i=1; i<b-1;i++){
-
-        if(b%i==0){
-            auxB+=i;
-        }
-    }
-
-    if(auxA==b && auxB==a && a!=0 && b!=0){
-        return true;
-    }
-
-    return false;
 }
 
 void numerosRomanos(char aux[20]) {
@@ -294,3 +285,71 @@ void nombrePropio(char aux[100]){
           printf("%s",nuevo);
       }
 }
+
+bool friendsNumbers (int a, int b){
+
+    int auxA;
+    int auxB;
+
+    for(int i=1; i<a-1;i++){
+
+        if(a%i==0){
+            auxA+=i;
+        }
+    }
+    for(int i=1; i<b-1;i++){
+
+        if(b%i==0){
+            auxB+=i;
+        }
+    }
+
+    if(auxA==b && auxB==a && a!=0 && b!=0){
+        return true;
+    }
+
+    return false;
+}
+
+bool esAnioBisiesto(int anio) {
+
+    return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
+}
+
+bool esFechaValida(int dia, int mes, int anio) {
+
+    if (mes < 1 || mes > 12 || dia < 1) {
+        return false;
+    }
+
+    int diasEnMes[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (mes == 2 && esAnioBisiesto(anio)) {
+
+        diasEnMes[2] = 29;
+    }
+
+    return dia <= diasEnMes[mes];
+}
+
+char* convert(char* fecha) {
+    static char resultado[50];
+
+    int dia, mes, anio;
+
+    char* nombresMeses[] = {"", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
+    if (sscanf(fecha, "%d/%d/%d", &dia, &mes, &anio) == 3 && esFechaValida(dia, mes, anio)) {
+
+        snprintf(resultado, sizeof(resultado), "%d de %s de %d", dia, nombresMeses[mes], anio);
+    } else {
+
+        snprintf(resultado, sizeof(resultado), "Fecha no valida");
+    }
+
+    return resultado;
+}
+
+
+
+
