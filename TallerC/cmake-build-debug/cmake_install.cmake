@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC
+# Install script for directory: C:/Users/Esteban/Desktop/Taller_C/TallerC
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

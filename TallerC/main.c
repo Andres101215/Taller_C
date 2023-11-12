@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 void numerosRomanos( char[20]);
@@ -10,14 +11,20 @@ void factoresPrimos(int);
 void numerosEgolatras(int);
 void nombrePropio(char[100]);
 int countDigits(int);
+bool friendsNumbers ( int , int );
+
 
 int main() {
     char aux[50] ;
     char op;
     int a;
+    int b;
+    int c;
 
     while(op!=10) {
-        printf("\n1.Numeros romanos"
+
+        printf("--------------------------"
+               "\n1.Numeros romanos"
                "\n2.Factores primos"
                "\n3.Nombre propio"
                "\n4.Numeros egolatras"
@@ -57,6 +64,26 @@ int main() {
                 break;
 
             case '5':
+
+                b= 0;
+                c= 0;
+
+                printf("\nIngrese el primer numero para comprobar: \n");
+                scanf("%i", &b);
+
+                    printf("Ingrese el segundo numero a comprobar: \n");
+                    scanf("%i", &c);
+
+                printf("Los numeros %i y %i", b, c);
+
+                if(friendsNumbers(b, c)==true){
+                    printf(" SI son amigos\n");
+                }else{
+                    printf(" NO son amigos\n");
+                }
+                getchar();
+                getchar();
+
                 break;
             case '6':
                 break;
@@ -70,11 +97,36 @@ int main() {
                 printf("Gracias por utilizar nuestro software");
                 break;
             default:
-                printf("\nERROR Opcion invalida\n");
+                printf("\nERROR Opcion invalida o dato invalido\n");
                 break;
         }
     }
     return 0;
+}
+
+bool friendsNumbers (int a, int b){
+
+    int auxA;
+    int auxB;
+
+    for(int i=1; i<a-1;i++){
+
+        if(a%i==0){
+            auxA+=i;
+        }
+    }
+    for(int i=1; i<b-1;i++){
+
+        if(b%i==0){
+            auxB+=i;
+        }
+    }
+
+    if(auxA==b && auxB==a && a!=0 && b!=0){
+        return true;
+    }
+
+    return false;
 }
 
 void numerosRomanos(char aux[20]) {

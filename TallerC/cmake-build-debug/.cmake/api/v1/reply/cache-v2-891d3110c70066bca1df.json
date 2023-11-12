@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC/cmake-build-debug"
+			"value" : "c:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -547,7 +547,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC"
+			"value" : "C:/Users/Esteban/Desktop/Taller_C/TallerC"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1167,7 +1167,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC/cmake-build-debug"
+			"value" : "C:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug"
 		},
 		{
 			"name" : "TallerC_IS_TOP_LEVEL",
@@ -1191,7 +1191,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/andre/OneDrive/Documentos/Taller c/Taller_C/TallerC"
+			"value" : "C:/Users/Esteban/Desktop/Taller_C/TallerC"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
