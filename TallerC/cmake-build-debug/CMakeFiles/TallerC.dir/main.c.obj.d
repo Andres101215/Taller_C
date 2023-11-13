@@ -1,5 +1,5 @@
 CMakeFiles/TallerC.dir/main.c.obj: \
- C:\Users\Esteban\Desktop\Taller_C\TallerC\main.c \
+ C:\Users\andre\OneDrive\Documentos\PROYECTOS\ C\Taller_C\TallerC\main.c \
  C:/Program\ Files/JetBrains/CLion\ 2023.2.2/bin/mingw/x86_64-w64-mingw32/include/stdio.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.2.2/bin/mingw/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.2.2/bin/mingw/x86_64-w64-mingw32/include/corecrt.h \

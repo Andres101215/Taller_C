@@ -273,6 +273,8 @@ int main() {
 void numerosRomanos(char aux[20]) {
     double num=0;
     short int a=0;
+
+
     for (int i = 0; i <strlen(aux)-1; i++) {
         switch (aux[i]) {
             case 'I':
@@ -366,7 +368,7 @@ void numerosRomanos(char aux[20]) {
                 break;
         }
     }
-    if(a==1){
+    if(a==1  || num==0){
         printf("null\n");
     }else{
         printf("El numero es : %.1f \n\n",num);

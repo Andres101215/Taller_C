@@ -1,3 +1,3 @@
-C:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug/CMakeFiles/TallerC.dir
-C:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Esteban/Desktop/Taller_C/TallerC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/andre/OneDrive/Documentos/PROYECTOS C/Taller_C/TallerC/cmake-build-debug/CMakeFiles/TallerC.dir
+C:/Users/andre/OneDrive/Documentos/PROYECTOS C/Taller_C/TallerC/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Documentos/PROYECTOS C/Taller_C/TallerC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
