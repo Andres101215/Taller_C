@@ -18,7 +18,8 @@ int pointProduct(int, int[], int[]);
 void generarMatrizAleatoria(int filas, int columnas, int **matriz);
 void imprimirMatriz(int filas, int columnas, int **matriz);
 int **multiplicarMatrices(int filas1, int columnas1, int **matriz1, int filas2, int columnas2, int **matriz2);
-
+void generateMagicMatrix(int n, int matriz[][n]);
+void printMatrix(int n, int matriz[][n]);
 
 
 
@@ -31,6 +32,7 @@ int main() {
     char date[30];
     int size1;
     int size2;
+    int n;
 
 
     while(op!=10) {
@@ -170,7 +172,7 @@ int main() {
                 if (columnas1 != filas2) {
                     printf("No es posible multiplicar las matrices. El numero de columnas de la primera matriz "
                            "debe ser igual al numero de filas de la segunda matriz.\n");
-                   
+
                     break;
                 }
 
@@ -225,6 +227,26 @@ int main() {
                 break;
 
             case '9':
+
+                printf("Ingrese el orden de la matriz magica (impar): ");
+                scanf("%d", &n);
+
+                if (n % 2 == 0) {
+                    printf("El orden debe ser un numero impar.\n");
+                    break;
+
+                }
+
+                int **matriz = (int **)malloc(n * sizeof(int *));
+                for (int i = 0; i < n; i++) {
+                    matriz[i] = (int *)malloc(n * sizeof(int));
+                }
+                generateMagicMatrix(n, matriz);
+
+                printf("\nMatriz Magica de Orden %d x %d:\n", n, n);
+                printMatrix(n, matriz);
+
+                getchar();getchar();
 
                 break;
             case '10':
@@ -495,7 +517,7 @@ void generarMatrizAleatoria(int filas, int columnas, int **matriz) {
 void imprimirMatriz(int filas, int columnas, int **matriz) {
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
-            printf("%d\t", matriz[i][j]);
+            printf("[%d]", matriz[i][j]);
         }
         printf("\n");
     }
@@ -524,6 +546,54 @@ int **multiplicarMatrices(int filas1, int columnas1, int **matriz1, int filas2, 
     }
 
     return resultado;
+}
+
+void generateMagicMatrix(int n, int matriz[][n]) {
+    int i, j;
+
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            matriz[i][j] = 0;
+        }
+    }
+
+    i = 0;
+    j = n / 2;
+
+    for (int num = 1; num <= n * n; num++) {
+        matriz[i][j] = num;
+
+        i--;
+        j++;
+
+        if (i < 0) {
+            i = n - 1;
+        }
+        if (j == n) {
+            j = 0;
+        }
+
+        if (matriz[i][j] != 0) {
+            i += 2;
+            j--;
+
+            if (i >= n) {
+                i -= n;
+            }
+            if (j < 0) {
+                j = n - 1;
+            }
+        }
+    }
+}
+
+void printMatrix(int n, int matriz[][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("[%4d]", matriz[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 
