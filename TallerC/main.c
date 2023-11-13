@@ -156,7 +156,7 @@ int main() {
                 break;
             case '8':
 
-                printf("\n");
+                printf("");
                 int filas1, columnas1, filas2, columnas2;
 
                 printf("Ingrese el numero de filas de la primera matriz: ");
@@ -169,10 +169,17 @@ int main() {
                 printf("Ingrese el numero de columnas de la segunda matriz: ");
                 scanf("%d", &columnas2);
 
+                if(filas1 ==0 || filas2 ==0 || columnas1== 0|| columnas2==0){
+
+                    printf("El tamano de una fila o columna no puede ser 0\n");
+                    while (getchar() != '\n');
+                    break;
+                }
+
                 if (columnas1 != filas2) {
                     printf("No es posible multiplicar las matrices. El numero de columnas de la primera matriz "
                            "debe ser igual al numero de filas de la segunda matriz.\n");
-
+                    while (getchar() != '\n');
                     break;
                 }
 
@@ -210,6 +217,7 @@ int main() {
                     free(resultad);
                 } else {
                     printf("\nNo es posible realizar la multiplicacion.\n");
+                    while (getchar() != '\n');
                 }
 
                 for (int i = 0; i < filas1; i++) {
@@ -233,6 +241,7 @@ int main() {
 
                 if (n % 2 == 0) {
                     printf("El orden debe ser un numero impar.\n");
+                    while (getchar() != '\n');
                     break;
 
                 }
