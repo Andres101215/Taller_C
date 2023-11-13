@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 
 
 void numerosRomanos( char[20]);
@@ -13,6 +14,13 @@ void nombrePropio(char[100]);
 int countDigits(int);
 bool friendsNumbers ( int , int );
 char* convert (char*);
+int pointProduct(int, int[], int[]);
+void generarMatrizAleatoria(int filas, int columnas, int **matriz);
+void imprimirMatriz(int filas, int columnas, int **matriz);
+int **multiplicarMatrices(int filas1, int columnas1, int **matriz1, int filas2, int columnas2, int **matriz2);
+
+
+
 
 int main() {
     char aux[50] ;
@@ -21,6 +29,9 @@ int main() {
     int b;
     int c;
     char date[30];
+    int size1;
+    int size2;
+
 
     while(op!=10) {
 
@@ -91,7 +102,6 @@ int main() {
                 printf("Ingrese la fecha en formato dd/mm/aaaa: ");
                 fgets(date, sizeof(date), stdin);
 
-                // Eliminar el salto de línea al final de la cadena (si está presente)
                 int len = strlen(date);
                 if (len > 0 && date[len - 1] == '\n') {
                     date[len - 1] = '\0';
@@ -104,10 +114,118 @@ int main() {
 
                 break;
             case '7':
+
+
+                printf("Ingrese el tamano del vector 1: ");
+                scanf("%d", &size1);
+                int resultadoo=0;
+
+                printf("Ingrese el tamano del vector 2: ");
+                scanf("%d", &size2);
+
+                if(size1==size2){
+
+                int vector1[size1];
+                int vector2[size2];
+
+                printf("\nIngrese los elementos del primer vector:\n");
+                for (int i = 0; i < size1; i++) {
+                    printf("Elemento %d: ", i + 1);
+                    scanf("%d", &vector1[i]);
+                }
+
+                printf("\nIngrese los elementos del segundo vector:\n");
+                for (int i = 0; i < size2; i++) {
+                    printf("Elemento %d: ", i + 1);
+                    scanf("%d", &vector2[i]);
+                }
+
+                resultadoo = pointProduct(size1, vector1, vector2);
+
+                if (resultadoo != -1) {
+                    printf("El producto punto de los vectores es: %d\n", resultadoo);
+                }else{
+                    printf("No fue posible hacer la operacion\n");
+                }}else{
+                    printf("Los vectores deben tener el mismo tamano\n");
+                }
+                getchar();getchar();
+
                 break;
             case '8':
+
+                printf("\n");
+                int filas1, columnas1, filas2, columnas2;
+
+                printf("Ingrese el numero de filas de la primera matriz: ");
+                scanf("%d", &filas1);
+                printf("Ingrese el numero de columnas de la primera matriz: ");
+                scanf("%d", &columnas1);
+
+                printf("\nIngrese el numero de filas de la segunda matriz: ");
+                scanf("%d", &filas2);
+                printf("Ingrese el numero de columnas de la segunda matriz: ");
+                scanf("%d", &columnas2);
+
+                if (columnas1 != filas2) {
+                    printf("No es posible multiplicar las matrices. El numero de columnas de la primera matriz "
+                           "debe ser igual al numero de filas de la segunda matriz.\n");
+                   
+                    break;
+                }
+
+                int **matriz1 = (int **)malloc(filas1 * sizeof(int *));
+                int **matriz2 = (int **)malloc(filas2 * sizeof(int *));
+                int **resultad;
+
+                for (int i = 0; i < filas1; i++) {
+                    matriz1[i] = (int *)malloc(columnas1 * sizeof(int));
+                }
+
+                for (int i = 0; i < filas2; i++) {
+                    matriz2[i] = (int *)malloc(columnas2 * sizeof(int));
+                }
+
+                generarMatrizAleatoria(filas1, columnas1, matriz1);
+                generarMatrizAleatoria(filas2, columnas2, matriz2);
+
+                printf("\n\nPrimera Matriz:\n");
+                imprimirMatriz(filas1, columnas1, matriz1);
+
+                printf("\nSegunda Matriz:\n");
+                imprimirMatriz(filas2, columnas2, matriz2);
+
+                resultad = multiplicarMatrices(filas1, columnas1, matriz1, filas2, columnas2, matriz2);
+
+                if (resultad != NULL) {
+
+                    printf("\nResultado de la multiplicacion:\n");
+                    imprimirMatriz(filas1, columnas2, resultad);
+
+                    for (int i = 0; i < filas1; i++) {
+                        free(resultad[i]);
+                    }
+                    free(resultad);
+                } else {
+                    printf("\nNo es posible realizar la multiplicacion.\n");
+                }
+
+                for (int i = 0; i < filas1; i++) {
+                    free(matriz1[i]);
+                }
+                free(matriz1);
+
+                for (int i = 0; i < filas2; i++) {
+                    free(matriz2[i]);
+                }
+                free(matriz2);
+
+                getchar();getchar();
+
                 break;
+
             case '9':
+
                 break;
             case '10':
                 printf("Gracias por utilizar nuestro software");
@@ -116,6 +234,7 @@ int main() {
                 printf("\nERROR Opcion invalida o dato invalido\n");
                 break;
         }
+
     }
     return 0;
 }
@@ -349,6 +468,65 @@ char* convert(char* fecha) {
 
     return resultado;
 }
+
+int pointProduct(int size, int vector1[size], int vector2[size]) {
+    int resultado = 0;
+
+    if (size <= 0) {
+        printf("Error: Los tamanos de los vectores deben ser positivos y no nulos.\n");
+        return -1;
+    }
+
+    for (int i = 0; i < size; i++) {
+        resultado += vector1[i] * vector2[i];
+    }
+
+    return resultado;
+}
+
+void generarMatrizAleatoria(int filas, int columnas, int **matriz) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matriz[i][j] = rand() % 10;
+        }
+    }
+}
+
+void imprimirMatriz(int filas, int columnas, int **matriz) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("%d\t", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int **multiplicarMatrices(int filas1, int columnas1, int **matriz1, int filas2, int columnas2, int **matriz2) {
+    int **resultado;
+
+    resultado = (int **)malloc(filas1 * sizeof(int *));
+    for (int i = 0; i < filas1; i++) {
+        resultado[i] = (int *)malloc(columnas2 * sizeof(int));
+    }
+
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            resultado[i][j] = 0;
+        }
+    }
+
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            for (int k = 0; k < columnas1; k++) {
+                resultado[i][j] += matriz1[i][k] * matriz2[k][j];
+            }
+        }
+    }
+
+    return resultado;
+}
+
+
 
 
 
